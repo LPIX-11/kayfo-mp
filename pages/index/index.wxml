@@ -1,0 +1,50 @@
+<view class="kf-home">
+  <!-- Custom branded nav bar -->
+  <app-nav-bar title="Kayfo Play" showBack="{{ false }}" />
+
+  <!-- Hero -->
+  <view class="kf-hero">
+    <view class="kf-hero__eyebrow">African Games Portal</view>
+    <view class="kf-hero__title">Play the best of Kayfo</view>
+    <view class="kf-hero__subtitle">
+      Instant H5 games, no install — running inside the TCMPP mini-app.
+    </view>
+  </view>
+
+  <!-- Game list -->
+  <view class="kf-section-title">Best Picks</view>
+
+  <view class="kf-grid">
+    <view
+      wx:for="{{ games }}"
+      wx:key="id"
+      class="kf-card"
+      data-id="{{ item.id }}"
+      bind:tap="handlePlay"
+    >
+      <view class="kf-card__thumb" style="background: {{ item.accent }};">
+        <text class="kf-card__badge">{{ item.category }}</text>
+        <text class="kf-card__play">▶</text>
+      </view>
+      <view class="kf-card__body">
+        <app-typography size="16" weight="700" color="#1a1a1a">
+          {{ item.title }}
+        </app-typography>
+        <app-typography size="12" color="#666">
+          {{ item.tagline }}
+        </app-typography>
+        <view class="kf-card__cta">
+          <app-button type="primary" data-id="{{ item.id }}" bind:onPress="handlePlay">
+            Play now
+          </app-button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="kf-footer">
+    <app-typography size="11" color="#9aa0a6">
+      POC · Powered by Kayfo · web-view integration
+    </app-typography>
+  </view>
+</view>

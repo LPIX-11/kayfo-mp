@@ -1,0 +1,79 @@
+/* ===========================================================================
+   KAYFO PLAY — GAME (web-view host)
+   =========================================================================== */
+
+.kf-game {
+  width: 100%;
+  height: 100vh;
+  background: #000;
+}
+
+.kf-game__loading,
+.kf-game__error {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14rpx;
+  background: #0d0d0d;
+  color: #fff;
+  padding: 48rpx;
+  text-align: center;
+}
+
+.kf-game__error-emoji {
+  font-size: 96rpx;
+}
+
+.kf-game__error-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+/* Diagnostic rows ----------------------------------------------------------- */
+.kf-game__diag {
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  border-radius: 14rpx;
+  padding: 18rpx 20rpx;
+  margin-top: 6rpx;
+}
+
+.kf-game__diag-label {
+  display: block;
+  font-size: 20rpx;
+  letter-spacing: 1rpx;
+  text-transform: uppercase;
+  color: #ff8a5c;
+  margin-bottom: 6rpx;
+}
+
+.kf-game__diag-value {
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.45;
+  color: #eaeaea;
+  word-break: break-all;
+}
+
+/* CTA stack ----------------------------------------------------------------- */
+.kf-game__error-cta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+  margin-top: 24rpx;
+}
+
+.kf-game__hint {
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  line-height: 1.5;
+  color: #9aa0a6;
+}

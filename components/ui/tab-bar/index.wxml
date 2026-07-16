@@ -1,0 +1,20 @@
+<view class="osn-tab-bar">
+  <view class="osn-tab-bar__tabs {{containerClass}}">
+    <block wx:for="{{tabs}}" wx:key="key">
+      <view
+        class="osn-tab-bar__tab {{itemContainerClass}} {{activeKey === item.key ? activeItemContainerClass : ''}}"
+        data-key="{{item.key}}"
+        bindtap="onTabClick"
+      >
+        <slot name="{{item.slotName}}" />
+      </view>
+    </block>
+  </view>
+  <view class="osn-tab-bar__content">
+    <block wx:for="{{tabs}}" wx:key="key">
+      <view wx:if="{{activeKey === item.key}}">
+        <slot name="{{item.contentSlot}}" />
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+<view class="kf-game">
+  <!-- Error / diagnostic state (web-view can't be overlaid, so we swap it out) -->
+  <view wx:if="{{ error }}" class="kf-game__error">
+    <text class="kf-game__error-emoji">🎮</text>
+    <text class="kf-game__error-title">Couldn't load the game</text>
+
+    <!-- The actual failure reason from binderror -->
+    <view class="kf-game__diag">
+      <text class="kf-game__diag-label">Reason</text>
+      <text class="kf-game__diag-value" selectable="{{ true }}">{{ errMsg }}</text>
+    </view>
+
+    <!-- The exact URL the web-view tried to load -->
+    <view class="kf-game__diag">
+      <text class="kf-game__diag-label">URL</text>
+      <text class="kf-game__diag-value" selectable="{{ true }}" user-select="{{ true }}">{{ url }}</text>
+    </view>
+
+    <view class="kf-game__error-cta">
+      <app-button type="primary" bind:onPress="handleRetry">Retry</app-button>
+      <app-button type="secondary" bind:onPress="handleCopyUrl">Copy URL</app-button>
+      <app-button type="secondary" bind:onPress="handleBack">Back to games</app-button>
+    </view>
+
+    <text class="kf-game__hint">
+      Tip: tap "Copy URL" and open it in Safari on this phone. If Safari loads it
+      but the game doesn't, it's a host/domain-whitelist issue (not the network).
+    </text>
+  </view>
+
+  <!-- The game. PlayCanvas build shows its own progress bar while loading. -->
+  <web-view
+    wx:elif="{{ url }}"
+    src="{{ url }}"
+    bindmessage="onMessage"
+    bindload="onWebLoad"
+    binderror="onWebError"
+  ></web-view>
+
+  <!-- Pre-resolve state (very brief; url resolves synchronously in onLoad) -->
+  <view wx:else class="kf-game__loading">
+    <text>Loading…</text>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<view
+  class="osn-typography"
+  style="
+    color: {{ computedColor }};
+    font-weight: {{ computedWeight }};
+    text-align: {{ align }};
+    font-size: {{ computedSize }};
+    text-decoration: {{ textDecoration }};
+    white-space: {{ ellipsis ? 'nowrap' : 'normal' }};
+    overflow: {{ ellipsis ? 'hidden' : 'visible' }};
+    text-overflow: {{ ellipsis ? 'ellipsis' : 'initial' }};
+    word-break: break-word;
+    line-height: {{ lineHeight }};
+  "
+>
+  <slot></slot>
+  {{ message }}
+</view>

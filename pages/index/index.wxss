@@ -1,0 +1,103 @@
+/* ===========================================================================
+   KAYFO PLAY — HOME
+   =========================================================================== */
+
+.kf-home {
+  min-height: 100vh;
+  background: #f5f6f8;
+}
+
+/* Hero ---------------------------------------------------------------------- */
+.kf-hero {
+  padding: 40rpx 32rpx 48rpx;
+  background: linear-gradient(135deg, #0B7A3B 0%, #12a152 100%);
+  color: #fff;
+}
+
+.kf-hero__eyebrow {
+  font-size: 22rpx;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.kf-hero__title {
+  margin-top: 8rpx;
+  font-size: 46rpx;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.kf-hero__subtitle {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  line-height: 1.5;
+  opacity: 0.92;
+  max-width: 520rpx;
+}
+
+/* Section ------------------------------------------------------------------- */
+.kf-section-title {
+  padding: 32rpx 32rpx 12rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Cards --------------------------------------------------------------------- */
+.kf-grid {
+  padding: 0 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.kf-card {
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.06);
+}
+
+.kf-card__thumb {
+  position: relative;
+  height: 260rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kf-card__badge {
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.kf-card__play {
+  color: #fff;
+  font-size: 72rpx;
+  opacity: 0.9;
+}
+
+.kf-card__body {
+  padding: 24rpx 28rpx 28rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.kf-card__cta {
+  margin-top: 16rpx;
+}
+
+/* Footer -------------------------------------------------------------------- */
+.kf-footer {
+  padding: 40rpx 32rpx 60rpx;
+  text-align: center;
+}

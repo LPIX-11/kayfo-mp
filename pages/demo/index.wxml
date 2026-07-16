@@ -1,0 +1,194 @@
+<wxs src="../../utils/wxs/filters.wxs" module="f" />
+
+<view class="d-flex flex-column w-100" style="min-height: 100vh; background: #f8f9fa;">
+  <!-- Custom Navigation Bar with back button -->
+  <app-nav-bar title="Component Demo" />
+
+  <!-- Page Content -->
+  <view class="d-flex flex-column gap-3 p-3" style="flex: 1;">
+
+    <!-- Stepper Demo -->
+    <app-card>
+      <view class="d-flex flex-column gap-3 p-3">
+        <app-typography size="16" weight="700" color="#333">
+          Stepper Component
+        </app-typography>
+
+        <app-stepper
+          steps="{{ steps }}"
+          current="{{ currentStep }}"
+          clickable="{{ true }}"
+          bind:change="handleStepChange"
+        />
+
+        <app-typography size="14" color="#666">
+          Current step: {{ steps[currentStep] }} ({{ currentStep + 1 }}/{{ steps.length }})
+        </app-typography>
+
+        <view class="d-flex gap-2">
+          <view style="flex: 1;">
+            <app-button
+              type="secondary"
+              disabled="{{ currentStep === 0 }}"
+              bind:onPress="handlePrevStep"
+            >
+              Previous
+            </app-button>
+          </view>
+          <view style="flex: 1;">
+            <app-button
+              type="primary"
+              disabled="{{ currentStep === steps.length - 1 }}"
+              bind:onPress="handleNextStep"
+            >
+              Next
+            </app-button>
+          </view>
+        </view>
+      </view>
+    </app-card>
+
+    <!-- Button States Demo -->
+    <app-card>
+      <view class="d-flex flex-column gap-3 p-3">
+        <app-typography size="16" weight="700" color="#333">
+          Button States
+        </app-typography>
+
+        <app-button type="primary" loading="{{ isSubmitting }}" bind:onPress="handleSubmit">
+          {{ isSubmitting ? 'Submitting...' : 'Submit (Loading Demo)' }}
+        </app-button>
+
+        <app-button type="primary" disabled="{{ true }}">
+          Disabled Button
+        </app-button>
+
+        <app-button type="secondary" bind:onPress="handleOpenBottomSheet">
+          Open Bottom Sheet
+        </app-button>
+      </view>
+    </app-card>
+
+    <!-- EventBus Demo -->
+    <app-card>
+      <view class="d-flex flex-column gap-2 p-3">
+        <app-typography size="16" weight="700" color="#333">
+          EventBus State
+        </app-typography>
+        <app-typography size="14" color="#666">
+          User name from shared state: {{ userName || 'Not loaded' }}
+        </app-typography>
+        <app-typography size="12" color="#999">
+          This value is synced via EventBus from app.js initialization.
+          Changes propagate automatically to all subscribed pages.
+        </app-typography>
+      </view>
+    </app-card>
+
+    <!-- WXS Filters Demo -->
+    <app-card>
+      <view class="d-flex flex-column gap-2 p-3">
+        <app-typography size="16" weight="700" color="#333">
+          WXS Filters
+        </app-typography>
+        <app-typography size="12" color="#999">
+          WXS runs in the render thread (not JS thread) for fast display-only logic.
+          Imported via: &lt;wxs src="../../utils/wxs/filters.wxs" module="f" /&gt;
+        </app-typography>
+
+        <view class="d-flex flex-column gap-1" style="margin-top: 8rpx;">
+          <app-typography size="14" color="#333">
+            formatDate: {{ f.formatDate(sampleDate) }}
+          </app-typography>
+          <app-typography size="14" color="#333">
+            formatPrice: {{ f.formatPrice(samplePrice, 'USD') }}
+          </app-typography>
+          <app-typography size="14" color="#333">
+            truncate(30): {{ f.truncate(sampleText, 30) }}
+          </app-typography>
+          <app-typography size="14" color="#333">
+            statusClass: {{ f.statusClass(sampleStatus) }}
+          </app-typography>
+          <app-typography size="14" color="#333">
+            capitalize: {{ f.capitalize('hello world') }}
+          </app-typography>
+          <app-typography size="14" color="#333">
+            timeAgo: {{ f.timeAgo(sampleDate) }}
+          </app-typography>
+        </view>
+      </view>
+    </app-card>
+
+    <!-- Behavior Demo -->
+    <app-card>
+      <view class="d-flex flex-column gap-2 p-3">
+        <app-typography size="16" weight="700" color="#333">
+          Loading Behavior
+        </app-typography>
+        <app-typography size="12" color="#999">
+          Demonstrates the loadingBehavior mixin: shared isLoading, hasError, errorMessage state
+          and withLoading() method across pages and components.
+        </app-typography>
+
+        <!-- Loading state indicator -->
+        <view wx:if="{{ isLoading }}" class="d-flex align-items-center gap-2" style="padding: 16rpx; background: #e3f2fd; border-radius: 8rpx;">
+          <app-typography size="14" color="#1976d2">Loading in progress...</app-typography>
+        </view>
+
+        <!-- Error state indicator -->
+        <view wx:if="{{ hasError }}" class="d-flex flex-column gap-1" style="padding: 16rpx; background: #fce4ec; border-radius: 8rpx;">
+          <app-typography size="14" weight="600" color="#c62828">Error occurred</app-typography>
+          <app-typography size="12" color="#c62828">{{ errorMessage }}</app-typography>
+        </view>
+
+        <!-- Success result -->
+        <view wx:if="{{ behaviorResult }}" style="padding: 16rpx; background: #e8f5e9; border-radius: 8rpx;">
+          <app-typography size="14" color="#2e7d32">{{ behaviorResult }}</app-typography>
+        </view>
+
+        <view class="d-flex gap-2">
+          <view style="flex: 1;">
+            <app-button type="primary" disabled="{{ isLoading }}" bind:onPress="handleBehaviorDemo">
+              Load Data
+            </app-button>
+          </view>
+          <view style="flex: 1;">
+            <app-button type="secondary" disabled="{{ isLoading }}" bind:onPress="handleBehaviorError">
+              Trigger Error
+            </app-button>
+          </view>
+        </view>
+      </view>
+    </app-card>
+  </view>
+
+  <!-- Bottom Sheet Modal -->
+  <app-modal
+    visible="{{ showBottomSheet }}"
+    placement="bottom"
+    size="full"
+    hasHeader="{{ true }}"
+    hasContent="{{ true }}"
+    hasFooter="{{ true }}"
+    bind:close="handleCloseBottomSheet"
+  >
+    <view slot="header">
+      <app-typography size="16" weight="700">Bottom Sheet</app-typography>
+    </view>
+    <view slot="content">
+      <view class="d-flex flex-column gap-2">
+        <app-typography size="14" color="#666">
+          This is a bottom sheet modal variant. It slides up from the bottom with a drag handle.
+        </app-typography>
+        <app-typography size="14" color="#666">
+          Tap the overlay to close, or use the button below.
+        </app-typography>
+      </view>
+    </view>
+    <view slot="footer">
+      <app-button type="primary" bind:onPress="handleCloseBottomSheet">
+        Done
+      </app-button>
+    </view>
+  </app-modal>
+</view>

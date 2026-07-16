@@ -1,0 +1,32 @@
+<view class="osn-input {{containerClass}}">
+  <block wx:if="{{type === 'date'}}">
+    <picker mode="date" value="{{value}}" bind:change="onDateChange">
+      <view class="osn-input__field fs-8 osn-input__field--picker {{readonly ? 'readonly' : ''}}">
+        {{ value || placeholder }}
+      </view>
+    </picker>
+  </block>
+
+  <block wx:elif="{{type === 'text'}}">
+    <input
+      class="osn-input__field fs-8"
+      value="{{value}}"
+      placeholder="{{placeholder}}"
+      readonly="{{readonly}}"
+      bindinput="onInput"
+    />
+      <!-- bindinput="" -->
+  </block>
+
+  <block wx:if="{{icon}}">
+    <picker mode="date" value="{{value}}" bind:change="onDateChange">
+      <view class="osn-input__icon" bind:tap="onIconTap">
+        <osn-icon icon="{{icon}}" height="30" width="30" />
+      </view>
+    </picker>
+  </block>
+</view>
+
+<view wx:if="{{showResults}}" class="osn-input__results {{resultClass}}">
+  <slot name="result"  />
+</view>

@@ -1,0 +1,50 @@
+/* ============================================================================
+   CUSTOM NAV BAR
+   ============================================================================ */
+
+.osn-nav-bar {
+  position: relative;
+  z-index: 200;
+  background: #fff;
+}
+
+.osn-nav-bar--transparent {
+  background: transparent;
+}
+
+.osn-nav-bar__content {
+  display: flex;
+  align-items: center;
+  padding: 0 16rpx;
+  position: relative;
+}
+
+.osn-nav-bar__back {
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  transition: background 0.15s ease-out;
+}
+
+.osn-nav-bar__back:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.osn-nav-bar__back-icon {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+  margin-top: -4rpx;
+}
+
+.osn-nav-bar__title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  margin-left: 16rpx;
+}

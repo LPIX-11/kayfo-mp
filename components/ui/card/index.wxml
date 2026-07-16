@@ -1,0 +1,3 @@
+<view class="d-flex flex-column gap-2 border br-10 w-100 {{ containerClass }}">
+  <slot />
+</view>

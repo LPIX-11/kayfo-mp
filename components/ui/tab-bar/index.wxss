@@ -1,0 +1,18 @@
+.osn-tab-bar {
+  width: 100%;
+}
+.osn-tab-bar__tabs {
+  display: flex;
+}
+.osn-tab-bar__tab {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.osn-tab-bar__tab.active {
+  /* Default: let parent style via containerClass */
+}
+.osn-tab-bar__content {
+  /* Content panel */
+}

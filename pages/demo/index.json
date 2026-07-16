@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "app-nav-bar": "/components/ui/nav-bar/index",
+    "app-button": "/components/ui/button/index",
+    "app-modal": "/components/ui/modal/index",
+    "app-stepper": "/components/ui/stepper/index",
+    "app-typography": "/components/ui/typography/index",
+    "app-card": "/components/ui/card/index"
+  }
+}

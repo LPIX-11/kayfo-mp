@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "default",
+  "navigationBarTitleText": "Loading…",
+  "navigationBarBackgroundColor": "#0B7A3B",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "app-button": "/components/ui/button/index"
+  }
+}

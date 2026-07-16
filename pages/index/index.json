@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "app-nav-bar": "/components/ui/nav-bar/index",
+    "app-button": "/components/ui/button/index",
+    "app-typography": "/components/ui/typography/index"
+  }
+}
